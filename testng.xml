@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <listeners>
+        <listener class-name="com.xm.listeners.TestListener"/>
+    </listeners>
+    <test parallel="methods" thread-count="4" name="STCtv">
+        <classes>
+            <class name="com.xm.tests.XmValidationTest"/>
+            <class name="com.xm.tests.ApiTaskTest"/>
+        </classes>
+    </test>
+</suite>
