@@ -37,7 +37,12 @@ TestNG is a powerful testing framework, an enhanced version of JUnit which was i
  
  ## Reporting using extent report
  I have used extent report to have a customized report.Kindly find the screenshot of generated report.
- <img src="ReportScreenshot.png">
+ 
+ # Web Report
+ <img src="WebResult.png">
+ 
+  # Api Report
+ <img src="Api.png">
  
 ## Execution from IDE
 
