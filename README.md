@@ -51,7 +51,7 @@ TestNG is a powerful testing framework, an enhanced version of JUnit which was i
 3.	Test cases can be grouped more easily.
 4.	Parallelization of tests can be achieved using TestNG.
 5.	Support for data-driven testing.
-6.	Inbuilt reporting.
+6.	Inbuilt reporting.(index.html)
 7.	Supports Web and Api
 
 ## Framework Architecture
