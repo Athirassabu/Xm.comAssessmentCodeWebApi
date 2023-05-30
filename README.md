@@ -78,7 +78,7 @@ TestNG is a powerful testing framework, an enhanced version of JUnit which was i
 ## Execution from IDE
 # Execution is possible from both testng.xml and maven commands so jenkins integration will be easy
 
-	You can start execution from testing.xml file after cloning the project.
+	You can start execution from testing.xml file after cloning the project and see the report in index.html
 	To run Web change group name as web,for api change to api to run both web and api provide group name as sanity in testng.xml.
 	You can run the project from terminal using mvn clean test
 	You can also run giving mvn test -Dgroups=web or mvn test -Dgroups=api or mvn test -Dgroups=sanity
