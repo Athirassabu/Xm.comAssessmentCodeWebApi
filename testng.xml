@@ -7,7 +7,7 @@
     <test parallel="classes" thread-count="1" name="STCtv">
         <groups>
             <run>
-                <include name="web"/>
+                <include name="api"/>
             </run>
         </groups>
         <classes>

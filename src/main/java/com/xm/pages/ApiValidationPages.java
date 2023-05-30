@@ -36,7 +36,6 @@ public class ApiValidationPages {
             }
 
         }
-        System.out.println("Value of location is:" + location);
         return filmNameMap;
     }
 
@@ -45,7 +44,6 @@ public class ApiValidationPages {
                 .extract().response();
         ExtentLogger.pass("Get people Api is hit successfully with status code as : " + response.statusCode());
         JsonPath people = new JsonPath(response.asString());
-        System.out.println("Value of second location is:" + location);
         int sizeCharacter = people.getInt("results.size()");
         for (int i = 0; i < sizeCharacter; i++) {
             String characterName = response.jsonPath().getString("results[" + i + "].name");
@@ -118,7 +116,6 @@ public class ApiValidationPages {
                 list.add(starShipClass);
                 JsonPath starShipPilot = new JsonPath(starShip.asString());
                 int sizePilot = starShipPilot.getInt("pilots.size()");
-                System.out.println("Size of pilot is: " + sizePilot);
                 pilots = new LinkedList<>();
                 for (int j = 0; j < sizePilot; j++) {
                     String pilot = starShip.jsonPath().getString("pilots[" + j + "]");
