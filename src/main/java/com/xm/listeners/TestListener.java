@@ -15,6 +15,7 @@ public class TestListener implements ITestListener {
         ExtentReport.createTest(result.getMethod().getDescription());
 
     }
+
     @Override
     public void onTestSuccess(ITestResult result) {
         ExtentLogger.pass(result.getName() + " is passed");
@@ -23,7 +24,7 @@ public class TestListener implements ITestListener {
     @Override
     public void onTestFailure(ITestResult result) {
         ExtentLogger.info(result.getName() + " is failed");
-        ExtentLogger.fail(result.getThrowable().getMessage() );
+        ExtentLogger.fail(result.getThrowable().getMessage());
         ExtentLogger.info(Arrays.toString(result.getThrowable().getStackTrace()));
 
     }

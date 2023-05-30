@@ -6,14 +6,16 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
 public class BaseTest {
-    @BeforeMethod
+   @BeforeMethod(alwaysRun = true)
     public void setUp() {
+
         Driver.initDriver();
     }
 
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void tearDown() {
+
         Driver.quitDriver();
     }
 }

@@ -4,7 +4,12 @@
     <listeners>
         <listener class-name="com.xm.listeners.TestListener"/>
     </listeners>
-    <test parallel="methods" thread-count="4" name="STCtv">
+    <test parallel="classes" thread-count="1" name="STCtv">
+        <groups>
+            <run>
+                <include name="web"/>
+            </run>
+        </groups>
         <classes>
             <class name="com.xm.tests.XmValidationTest"/>
             <class name="com.xm.tests.ApiTaskTest"/>

@@ -13,8 +13,8 @@ import java.util.LinkedList;
 public class ApiValidationPages {
 
     public static String filmLocationGot;
-    public static String location="";
-    public static String pilotName="";
+    public static String location = "";
+    public static String pilotName = "";
     public static LinkedHashMap filmNameMap;
 
     public static LinkedHashMap findFilmTitleNewHope() {
@@ -29,7 +29,7 @@ public class ApiValidationPages {
         for (int i = 0; i < size; i++) {
             String filmName = response.jsonPath().getString("results[" + i + "].title");
             if (filmName.equals("A New Hope")) {
-                location = String.valueOf(i+1);
+                location = String.valueOf(i + 1);
                 filmNameMap.put("position", location);
                 filmNameMap.put("filmNameDisplayed", filmName);
                 ExtentLogger.pass("Film with title as A New Hope is available in location : " + location);
@@ -69,7 +69,7 @@ public class ApiValidationPages {
         JsonPath people = new JsonPath(response.asString());
         int sizeCharacter = people.getInt("results.size()");
 
-        LinkedList list=new LinkedList<>();
+        LinkedList list = new LinkedList<>();
         for (int i = 0; i < sizeCharacter; i++) {
             String characterName = response.jsonPath().getString("results[" + i + "].name");
             if (characterName.equals("Biggs Darklighter")) {
@@ -94,10 +94,9 @@ public class ApiValidationPages {
     public LinkedList validateLukeSkyWalkerPilot() {
 
 
-
         Response response = ApiUtils.buildRequestForGetCalls().get("people/").then()
                 .extract().response();
-      //  ExtentLogger.pass("Get people Api is hit successfully with status code as : " + response.statusCode());
+        //  ExtentLogger.pass("Get people Api is hit successfully with status code as : " + response.statusCode());
         JsonPath people = new JsonPath(response.asString());
         int sizeCharacter = people.getInt("results.size()");
 
@@ -112,33 +111,31 @@ public class ApiValidationPages {
 
                 Response starShip = ApiUtils.buildRequestForGetCalls().get("starships/" + starShipNumber + "/").then()
                         .extract().response();
-             //   ExtentLogger.pass("Star ship Api is hit successfully ");
+                //   ExtentLogger.pass("Star ship Api is hit successfully ");
                 String starShipName = starShip.jsonPath().getString("name");
                 String starShipClass = starShip.jsonPath().getString("starship_class");
                 list.add(starShipName);
                 list.add(starShipClass);
                 JsonPath starShipPilot = new JsonPath(starShip.asString());
                 int sizePilot = starShipPilot.getInt("pilots.size()");
-                System.out.println("Size of pilot is: "+sizePilot);
+                System.out.println("Size of pilot is: " + sizePilot);
                 pilots = new LinkedList<>();
                 for (int j = 0; j < sizePilot; j++) {
-                    String pilot=starShip.jsonPath().getString("pilots["+j+"]");
-                    String pilotLocation= CharMatcher.digit().retainFrom(pilot);
+                    String pilot = starShip.jsonPath().getString("pilots[" + j + "]");
+                    String pilotLocation = CharMatcher.digit().retainFrom(pilot);
                     pilots.add(pilotLocation);
                 }
-                ExtentLogger.pass("List of pilots number in starship "+starShipNumber+" is :"+pilots );
+                ExtentLogger.pass("List of pilots number in starship " + starShipNumber + " is :" + pilots);
             }
         }
 
-        for(int i=0;i<pilots.size();i++)
-        {
+        for (int i = 0; i < pilots.size(); i++) {
             Response pilotApi = ApiUtils.buildRequestForGetCalls().get("people/" + pilots.get(i) + "/").then()
                     .extract().response();
             String pilotNameDisplayed = pilotApi.jsonPath().getString("name");
-            if(pilotNameDisplayed.equals("Luke Skywalker"))
-            {
-                pilotName=pilotNameDisplayed;
-                ExtentLogger.pass("Pilot name displayed is :"+pilotNameDisplayed+" pilot location is :"+pilots.get(i));
+            if (pilotNameDisplayed.equals("Luke Skywalker")) {
+                pilotName = pilotNameDisplayed;
+                ExtentLogger.pass("Pilot name displayed is :" + pilotNameDisplayed + " pilot location is :" + pilots.get(i));
                 break;
             }
         }
