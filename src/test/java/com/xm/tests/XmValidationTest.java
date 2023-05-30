@@ -29,7 +29,7 @@ public class XmValidationTest extends BaseTest {
         DriverManager.getDriver().manage().window().setSize(new Dimension(1024, 768));
         DriverManager.getDriver().get(ConfigFactory.getConfig().url());
         XmHomePage xmh = new XmHomePage();
-        xmh.clickAcceptAll().getTitleOfHome().validateSectionsInHome().completeResearchEducationSectionValidation().clickEconomicCalendar().getTodayDate().getTomorrowDate().getNextWeek().clickHereDisclaimer().clickHereRiskWarning().switchToNextWindow();
+        xmh.clickAcceptAll().getTitleOfHome().validateSectionsInHome().completeResearchEducationSectionValidation().clickEconomicCalendar().getTodayDate().getTomorrowDate().getNextWeek().getNextMonth().clickHereDisclaimer().clickHereRiskWarning().switchToNextWindow();
 
     }
 
@@ -38,7 +38,7 @@ public class XmValidationTest extends BaseTest {
         DriverManager.getDriver().manage().window().setSize(new Dimension(800, 600));
         DriverManager.getDriver().get(ConfigFactory.getConfig().url());
         XmHomePage xmh = new XmHomePage();
-        xmh.clickAcceptAll().getTitleOfHome().clickResourceEducation800X600().clickCalendarButton().getTodayDate().getTomorrowDate().getNextWeek().clickHereDisclaimer().clickHereRiskWarning().switchToNextWindow();
+        xmh.clickAcceptAll().getTitleOfHome().clickResourceEducation800X600().clickCalendarButton().getTodayDate().getTomorrowDate().getNextWeek().getNextMonth().clickHereDisclaimer().clickHereRiskWarning().switchToNextWindow();
         ;
 
     }
