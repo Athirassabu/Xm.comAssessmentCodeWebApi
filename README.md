@@ -93,9 +93,9 @@ TestNG is a powerful testing framework, an enhanced version of JUnit which was i
 
 
 
-# Note - This is basically Web,page object model framework using testng and java with extent report.I have added rest api test cases to the existing framework to avoid sending multiple files.Please let me know if you need additional framework for Rest assured.
-# When you run Api test cases the browser will open and close since this is a web based framework and thread local to execute parallel execution is implemented and extent report also uses thread local hence to show the execution report I have used the same methods.
-# Please let me know if you need additional framework for rest assured alone,I can prepare and send.
+Note - This is basically Web,page object model framework using testng and java with extent report.I have added rest api test cases to the existing framework to avoid sending multiple files.Please let me know if you need additional framework for Rest assured.
+When you run Api test cases the browser will open and close since this is a web based framework and thread local to execute parallel execution is implemented and extent report also uses thread local hence to show the execution report I have used the same methods.
+Please let me know if you need additional framework for rest assured alone,I can prepare and send.
 
 Thanks,
 Athira
