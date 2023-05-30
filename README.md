@@ -1,19 +1,49 @@
 ## Abstract Idea about the task:
-Steps
-1. Navigate to the following URL https://subscribe.stctv.com/
-2. Validate the Subscription Packages – Type & Price and Currency for all Countries (SA /
-Kuwait and Baharin)
+Automation testing task #1 (UI)
+Resource: xm.com
+Tools: Java AND (Selenide OR Selenium OR &lt;your_choice&gt;)
+Task: Automate next use case to run in three different browser’s screen resolution:
+1) Maximum (supported by your display)
+2) 1024 x 768
+3) 800 x 600
+Use Case:
+1. Open Home page (make any check here if needed).
+2. Click the &lt;Research and Education&gt; link located at the top menu (make any check
+here if needed).
+3. Click &lt;Economic Calendar&gt; link in the opened menu (make any check here if
+needed).
+4. Select &lt;Today&gt; on Slider and check that the date is correct.
+5. Select &lt;Tomorrow&gt; on Slider and check that the date is correct.
+6. Select &lt;Next Week&gt; on Slider and check that the date is correct.
+7. Select &lt;Next Month&gt; on Slider and check that the date is correct.
+8. Click &lt;here&gt; link in the “disclaimer” block at the bottom (make any check here if
+needed).
+9. Click &lt;here&gt; link in the “Risk Warning” block at the bottom.
+10. Check that &lt;Risk Disclosure&gt; document was opened in new tab.
 
-## Test cases created:
+At the end: Imported IntelliJ/other IDE project so we can run it on our local PC.
 
-1. Validation for KSA region-This test case will validate type of subscription,price and currency for KSA region
-2. Validation for Bahrain region-This test case will validate type of subscription,price and currency for Bahrain region
-3. Validation for Kuwait region-This test case will validate type of subscription,price and currency for Kuwait region
+Automation testing task #2 (API)
+Resource: https://swapi.dev/
+Endpoints examples:
+ find in site tutorial
+Tools: Java AND (Rest Assured OR &lt;your_choice&gt;)
+Use Case:
+1. Find film with a title ”A New Hope”
+2. Using previous response (1) find person with name “Biggs Darklighter” among
+the characters that were part of that film.
+3. Using previous response (2) find which starship he/she was flying on.
+4. Using previous response (3) check next:
+a. starship class is “Starfighter”
+b. “Luke Skywalker” is among pilots that were also flying this kind of starship
 
-# selenium-TestNG-java-maven
+At the end: Imported IntelliJ/other project so we can run it on our local PC.
+
+# selenium-TestNG-Rest assured java-maven
 
 Automation Testing Using Java, Selenium with TestNg.
 TestNG is a powerful testing framework, an enhanced version of JUnit which was in use for a long time before TestNG came into existence. NG stands for 'Next Generation'.
+
 # TestNG framework provides the following features
 
 1.	Annotations help us organize the tests easily.
@@ -22,6 +52,7 @@ TestNG is a powerful testing framework, an enhanced version of JUnit which was i
 4.	Parallelization of tests can be achieved using TestNG.
 5.	Support for data-driven testing.
 6.	Inbuilt reporting.
+7.	Supports Web and Api
 
 ## Framework Architecture
 
@@ -45,25 +76,29 @@ TestNG is a powerful testing framework, an enhanced version of JUnit which was i
  <img src="Api.png">
  
 ## Execution from IDE
+# Execution is possible from both testng.xml and maven commands so jenkins integration will be easy
 
 	You can start execution from testing.xml file after cloning the project.
+	To run Web change group name as web,for api change to api to run both web and api provide group name as sanity in testng.xml.
+	You can run the project from terminal using mvn clean test
+	You can also run giving mvn test -Dgroups=web or mvn test -Dgroups=api or mvn test -Dgroups=sanity
 
 
 ## Set-Up prerequisites.
 
-1.	Java version - jdk 1.8.0_281,
+1.	Java version - jdk 1.9
 2.	Maven version - apache maven 3.8.1,
-3.	maven-surefire-plugin - 3.0.0-M1
+3.	maven-surefire-plugin - 2.14.1
 4.	IntelliJ/Eclipse Cucumber plugins
 
-## Maven Dependencies.
 
-1.	Testng - 7.4.0
-2.	owner - 1.0.12
-3.	junit - 4.13.2
-4.	webdrivermanager - 5.0.3
-5.	selenium-java - 4.0.0
 
+# Note - This is basically Web,page object model framework using testng and java with extent report.I have added rest api test cases to the existing framework to avoid sending multiple files.Please let me know if you need additional framework for Rest assured.
+# When you run Api test cases the browser will open and close since this is a web based framework and thread local to execute parallel execution is implemented and extent report also uses thread local hence to show the execution report I have used the same methods.
+# Please let me know if you need additional framework for rest assured alone,I can prepare and send.
+
+Thanks,
+Athira
 
 
 
