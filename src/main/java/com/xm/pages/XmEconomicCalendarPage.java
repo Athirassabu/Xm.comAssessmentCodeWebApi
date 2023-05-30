@@ -103,43 +103,52 @@ public class XmEconomicCalendarPage {
         String sundayYear = String.valueOf(dates.get(6).getYear());
         String sundayYearMonth = sundayYear + "-" + sundayMonth;
         String mondayYearMonth = mondayYear + "-" + mondayMonth;
-        String todayDateGot = SeleniumUtils.getText(TEXT_MONTHYEAR);
-        if (todayDateGot.equals(mondayYearMonth)) {
+        String todayDateGot = todaysDate;
+        if (todayDateGot.equals(mondayYearMonth) && !todayDateGot.equals(sundayYearMonth)) {
             String nextWeekFirstDay = SeleniumUtils.getText(TEXT_NEXTWEEKFIRSTDAY);
-            if (dayOfMonthMonday.equals(nextWeekFirstDay))
+            if (dayOfMonthMonday.equals(nextWeekFirstDay)) {
                 ExtentLogger.pass("Fist day of next week is validated successfully as :" + nextWeekFirstDay);
+            }
+            SeleniumUtils.click(TEXT_CLICKNEXT);
+            String nextWeekLastDay = SeleniumUtils.getText(TEXT_NEXTWEEKFIRSTDAY);
+            if (dayOfMonthSunday.equals(nextWeekLastDay)) {
+                ExtentLogger.pass("Last day of next week is validated successfully as :" + nextWeekFirstDay);
+            }
         }
         LinkedList list = new LinkedList<>();
-        if (!todayDateGot.equals(sundayYearMonth) || !todayDateGot.equals(mondayYearMonth)) {
-            SeleniumUtils.click(TEXT_CLICKNEXT);
+        if (!todayDateGot.equals(sundayYearMonth) && !todayDateGot.equals(mondayYearMonth)) {
             int size = DriverManager.getDriver().findElements(TEXT_NEXTWEEKFIRSTDAY).size();
-            if (size == 1) {
-                String nextWeekLastDay = SeleniumUtils.getText(TEXT_NEXTWEEKFIRSTDAY);
-                if (dayOfMonthSunday.equals(nextWeekLastDay)) {
-                    ExtentLogger.pass("Last day of the week is validated and displayed as :" + nextWeekLastDay);
-                }
-            }
-            if (size > 1) {
+            for (int i = 1; i <= size; i++) {
 
-                for (int i = 1; i <= size; i++) {
-
-                    String datesDisplayed = DriverManager.getDriver().findElement(By.xpath("(//div[@class='mat-calendar-body-cell-content mat-focus-indicator mat-calendar-body-selected'])[" + i + "]")).getText();
-                    list.add(datesDisplayed);
-
-                }
-                String monday = (String) list.get(0);
-                String sunday = (String) list.get(1);
-                if (dayOfMonthMonday.equals(monday) && dayOfMonthSunday.equals(sunday)) {
-                    ExtentLogger.pass("Fist day of next week is :" + monday + " Last day of week Sunday is : " + sunday);
-                }
+                String datesDisplayed = DriverManager.getDriver().findElement(By.xpath("(//div[@class='mat-calendar-body-cell-content mat-focus-indicator mat-calendar-body-selected'])[" + i + "]")).getText();
+                list.add(datesDisplayed);
 
             }
+            String monday = (String) list.get(0);
+            String sunday = (String) list.get(1);
+            if (dayOfMonthMonday.equals(monday) && dayOfMonthSunday.equals(sunday)) {
+                ExtentLogger.pass("Fist day of next week is :" + monday + " Last day of next week Sunday is : " + sunday);
+            }
 
-            ExtentLogger.pass("Next week date is available in next month hence clicked next in calender");
+        }
+        if (todayDateGot.equals(sundayYearMonth) && todayDateGot.equals(mondayYearMonth)) {
+            int size = DriverManager.getDriver().findElements(TEXT_NEXTWEEKFIRSTDAY).size();
+            System.out.println("Size is displayed as :" + size);
+            for (int i = 1; i <= size; i++) {
+
+                String datesDisplayed = DriverManager.getDriver().findElement(By.xpath("(//div[@class='mat-calendar-body-cell-content mat-focus-indicator mat-calendar-body-selected'])[" + i + "]")).getText();
+                list.add(datesDisplayed);
+
+            }
+            String monday = (String) list.get(0);
+            String sunday = (String) list.get(1);
+            if (dayOfMonthMonday.equals(monday) && dayOfMonthSunday.equals(sunday)) {
+                ExtentLogger.pass("Fist day of next week is :" + monday + " Last day of next week Sunday is : " + sunday);
+            }
+
         }
 
         return this;
-
     }
 
 
