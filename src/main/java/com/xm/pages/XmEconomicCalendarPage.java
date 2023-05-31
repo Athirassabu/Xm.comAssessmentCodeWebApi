@@ -57,9 +57,12 @@ public class XmEconomicCalendarPage {
         Date date = cal.getTime();
         todaysDate = monthYear.format(date);
         String todayIs = todayDay.format(date);
+        String todayIss=  StringUtils.stripStart(todayIs,"0");
         String todayDateGot = SeleniumUtils.getText(TEXT_MONTHYEAR);
         String todayDate = SeleniumUtils.getText(TEXT_TODAYDAY);
-        if (todaysDate.equals(todayDateGot) && todayIs.equals(todayDate)) {
+        if (todaysDate.equals(todayDateGot) && todayIss.equals(todayDate)) {
+            System.out.println(todaysDate);
+            System.out.println(todayIs);
             ExtentLogger.pass("Year and month displayed in calendar is :" + todayDateGot + " Todays date displayed is : " + todayDate);
 
         }
