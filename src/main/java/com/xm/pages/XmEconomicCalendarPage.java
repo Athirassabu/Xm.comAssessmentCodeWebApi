@@ -4,6 +4,7 @@ import com.xm.config.ConfigFactory;
 import com.xm.driver.DriverManager;
 import com.xm.reports.ExtentLogger;
 import com.xm.utils.SeleniumUtils;
+import org.apache.commons.lang.StringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -76,9 +77,10 @@ public class XmEconomicCalendarPage {
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DAY_OF_YEAR, 1);
         Date tomorrow = cal.getTime();
-        String tomorrowIs = tommorowDate.format(tomorrow);
+        String tomorrowIs= tommorowDate.format(tomorrow);
+        String tomorrowIss=  StringUtils.stripStart(tomorrowIs,"0");
         String tomorrowDayIst = SeleniumUtils.getText(TEXT_TOMMOROWDATE);
-        if (tomorrowIs.equals(tomorrowDayIst)) {
+        if (tomorrowIss.equals(tomorrowDayIst)) {
             ExtentLogger.pass("Tomorrow Date displayed is : " + tomorrowDayIst);
 
         }
